@@ -1,99 +1,89 @@
-
 <!DOCTYPE html>
 <html lang="pt">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Benefício para Todos</title>
+  <title>Mentoria de Jogo</title>
   <style>
     body {
-      background-color: #121212;
-      color: white;
       font-family: Arial, sans-serif;
+      background: #f7f7f7;
       padding: 20px;
       text-align: center;
     }
-    form {
-      max-width: 500px;
-      margin: 0 auto;
-      text-align: left;
+    h1 {
+      color: #2c3e50;
     }
-    label {
-      display: block;
-      margin-top: 15px;
-    }
-    input, select, textarea {
-      width: 100%;
-      padding: 10px;
-      margin-top: 5px;
-      border-radius: 5px;
-      border: none;
+    p {
+      font-size: 18px;
+      margin: 20px 0;
     }
     button {
-      margin-top: 20px;
-      padding: 10px 20px;
-      font-size: 16px;
-      cursor: pointer;
-      background-color: #1e88e5;
+      background-color: #3498db;
       color: white;
       border: none;
-      border-radius: 5px;
+      padding: 12px 20px;
+      border-radius: 6px;
+      font-size: 16px;
+      cursor: pointer;
     }
-    #confirmation {
+    button:hover {
+      background-color: #2980b9;
+    }
+    .notification {
       display: none;
+      background: #ffeaa7;
+      color: #2d3436;
+      padding: 20px;
+      border-radius: 8px;
       margin-top: 30px;
+      animation: fadeIn 1s ease-in-out;
     }
-    .decision-buttons {
-      margin-top: 20px;
-    }
-    .decision-buttons button {
-      margin: 0 10px;
-      background-color: #43a047;
+    @keyframes fadeIn {
+      from {opacity: 0;}
+      to {opacity: 1;}
     }
   </style>
 </head>
 <body>
-  <h1>Benefício para Todos</h1>
-  <p>Preencha este formulário para se registar no nosso sistema de apoio financeiro. O pagamento será realizado dentro de 7 dias após análise dos dados.</p>
-  
-  <form id="benefitForm">
-    <label>Nome completo:<input type="text" required></label>
-    <label>Idade:<input type="number" required></label>
-    <label>Número de telefone:<input type="tel" required></label>
-    <label>Província:<input type="text" required></label>
-    <label>Ocupação:<input type="text" required></label>
-    <label>Renda mensal:<input type="number" required></label>
-    <label>Número de dependentes:<input type="number" required></label>
-    <label>Precisa de apoio específico?<textarea></textarea></label>
-    <label>Método de pagamento:
-      <select required>
-        <option value="">Selecione</option>
-        <option value="mpesa">M-Pesa</option>
-        <option value="emola">e-Mola</option>
-      </select>
-    </label>
-    <label>Número da conta (telefone para pagamento):<input type="tel" required></label>
-    <button type="submit">Enviar</button>
-  </form>
 
-  <div id="confirmation">
-    <p>Obrigado pelo envio. O seu pedido foi registado com sucesso. O pagamento será realizado dentro de 7 dias úteis.</p>
-    <p>Deseja continuar com as nossas outras atividades?</p>
-    <div class="decision-buttons">
-      <button onclick="location.href='https://ganhe-10000mts.vercel.app'">Sim</button>
-      <button onclick="location.href='https://supergamespribe.vercel.app'">Não</button>
-    </div>
+  <h1>Receba a sua Mentoria e comece a jogar normalmente</h1>
+
+  <p>
+    <strong>1º Passo:</strong><br>
+    Antes de você receber a sua mentoria, deve seguir o primeiro passo primordial para não enfrentar dificuldades no seu jogo, que é criar a sua conta para melhorar o funcionamento da mentoria.
+  </p>
+
+  <a href="https://bit.ly/3HjLcdZ" target="_blank">
+    <button>Criar conta</button>
+  </a>
+
+  <p>
+    Após este passo já podes receber a sua mentoria, acesse a sua mentoria no botão abaixo.
+  </p>
+
+  <button onclick="acessarMentoria()">Acessar</button>
+
+  <div class="notification" id="notificacao">
+    <p>🔔 Caro usuário, foi detectado algo errado no sistema.<br>
+    Pode ser que não terminou os passos exigidos ou podes alternar por abrir uma outra conta para facilitar te encontrar.</p>
+    <button onclick="fecharNotificacao()">Get</button>
   </div>
 
   <script>
-    const form = document.getElementById('benefitForm');
-    const confirmation = document.getElementById('confirmation');
+    function acessarMentoria() {
+      // Verifica se é a primeira vez
+      if (!localStorage.getItem('mentoriaAcessada')) {
+        document.getElementById('notificacao').style.display = 'block';
+        localStorage.setItem('mentoriaAcessada', 'true');
+      } else {
+        alert('Bem-vindo de volta à sua mentoria!');
+      }
+    }
 
-    form.addEventListener('submit', function(e) {
-      e.preventDefault();
-      form.style.display = 'none';
-      confirmation.style.display = 'block';
-    });
+    function fecharNotificacao() {
+      document.getElementById('notificacao').style.display = 'none';
+    }
   </script>
+
 </body>
 </html>
