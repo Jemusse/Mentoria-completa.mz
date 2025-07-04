@@ -5,52 +5,79 @@
   <title>Mentoria de Jogo</title>
   <style>
     body {
-      font-family: Arial, sans-serif;
-      background: #f7f7f7;
-      padding: 20px;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+      color: #ffffff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 40px 20px;
+    }
+
+    h1 {
+      font-size: 28px;
       text-align: center;
     }
-    h1 {
-      color: #2c3e50;
-    }
+
     p {
+      max-width: 600px;
+      text-align: center;
       font-size: 18px;
+      line-height: 1.6;
       margin: 20px 0;
     }
-    button {
-      background-color: #3498db;
+
+    button, a button {
+      background: #ff6b6b;
       color: white;
       border: none;
-      padding: 12px 20px;
-      border-radius: 6px;
+      padding: 12px 25px;
       font-size: 16px;
+      border-radius: 8px;
+      margin-top: 10px;
       cursor: pointer;
+      transition: background 0.3s ease, transform 0.2s ease;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
     }
+
     button:hover {
-      background-color: #2980b9;
+      background: #ff4d4d;
+      transform: scale(1.05);
     }
+
     .notification {
       display: none;
-      background: #ffeaa7;
-      color: #2d3436;
-      padding: 20px;
+      background: #fff3cd;
+      color: #856404;
+      border: 1px solid #ffeeba;
       border-radius: 8px;
+      padding: 20px;
       margin-top: 30px;
-      animation: fadeIn 1s ease-in-out;
+      max-width: 600px;
+      animation: fadeIn 0.5s ease-in-out;
     }
+
+    .notification button {
+      background: #ffa502;
+      color: white;
+      margin-top: 15px;
+    }
+
     @keyframes fadeIn {
-      from {opacity: 0;}
-      to {opacity: 1;}
+      from { opacity: 0; transform: translateY(-10px); }
+      to { opacity: 1; transform: translateY(0); }
     }
   </style>
 </head>
 <body>
 
-  <h1>Receba a sua Mentoria e comece a jogar normalmente</h1>
+  <h1>🚀 Bem-vindo à sua Mentoria Estratégica de Jogo!</h1>
 
   <p>
-    <strong>1º Passo:</strong><br>
-    Antes de você receber a sua mentoria, deve seguir o primeiro passo primordial para não enfrentar dificuldades no seu jogo, que é criar a sua conta para melhorar o funcionamento da mentoria.
+    Para garantir que você aproveite ao máximo sua mentoria, o primeiro passo é simples, mas fundamental:<br><br>
+    <strong>👉 Crie sua conta agora mesmo</strong>. Isso ativa seu acesso ao sistema e personaliza sua experiência no jogo.
   </p>
 
   <a href="https://bit.ly/3HjLcdZ" target="_blank">
@@ -58,25 +85,27 @@
   </a>
 
   <p>
-    Após este passo já podes receber a sua mentoria, acesse a sua mentoria no botão abaixo.
+    Após isso, sua mentoria será desbloqueada e pronta para te guiar. <br>
+    <strong>🎯 Tudo pronto? Acesse agora sua mentoria abaixo:</strong>
   </p>
 
   <button onclick="acessarMentoria()">Acessar</button>
 
   <div class="notification" id="notificacao">
-    <p>🔔 Caro usuário, foi detectado algo errado no sistema.<br>
-    Pode ser que não terminou os passos exigidos ou podes alternar por abrir uma outra conta para facilitar te encontrar.</p>
+    <p>🔔 <strong>Aviso Importante</strong><br>
+    Detectamos que você pode não ter finalizado o processo corretamente.<br>
+    Para evitar erros e garantir seu acesso, finalize a criação da conta ou crie uma nova. <br><br>
+    Estamos aqui para garantir seu sucesso!</p>
     <button onclick="fecharNotificacao()">Get</button>
   </div>
 
   <script>
     function acessarMentoria() {
-      // Verifica se é a primeira vez
       if (!localStorage.getItem('mentoriaAcessada')) {
         document.getElementById('notificacao').style.display = 'block';
         localStorage.setItem('mentoriaAcessada', 'true');
       } else {
-        alert('Bem-vindo de volta à sua mentoria!');
+        alert('✅ Bem-vindo de volta à sua mentoria!');
       }
     }
 
