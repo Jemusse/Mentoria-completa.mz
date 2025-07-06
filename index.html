@@ -60,10 +60,11 @@
       max-width: 700px;
       font-size: 20px;
       animation: fadeIn 0.5s ease-in-out;
+      text-align: center;
     }
 
     .notification button {
-      background: #ffa502;
+      background: #28a745;
       color: white;
       padding: 14px 28px;
       font-size: 20px;
@@ -95,17 +96,15 @@
   <button onclick="acessarMentoria()">Acessar Mentoria</button>
 
   <div class="notification" id="notificacao">
-    <p>🔔 <strong>Aviso Importante</strong><br><br>
-    Detectamos que você pode não ter finalizado o processo corretamente.<br>
-    Para evitar erros e garantir seu acesso, finalize a criação da conta ou crie uma nova.<br><br>
-    Estamos aqui para garantir seu sucesso!</p>
-    <button onclick="fecharNotificacao()">Fechar</button>
+    <p>👋 Olá<br><br>
+    Bem-vindo à sua mentoria.</p>
+    <button onclick="abrirMentoria()">Abrir</button>
   </div>
 
   <script>
     function criarConta() {
       localStorage.setItem('contaCriada', 'true');
-      window.open('https://bit.ly/3HjLcdZ', '_blank');
+      window.open('https://is.gd/hHdRiZ', '_blank');
     }
 
     function acessarMentoria() {
@@ -116,8 +115,8 @@
       }
     }
 
-    function fecharNotificacao() {
-      document.getElementById('notificacao').style.display = 'none';
+    function abrirMentoria() {
+      window.location.href = 'https://rob-ia.vercel.app';
     }
   </script>
 
