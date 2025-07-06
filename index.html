@@ -31,7 +31,7 @@
       margin: 30px 0;
     }
 
-    button, a button {
+    button {
       background: #ff6b6b;
       color: white;
       border: none;
@@ -85,9 +85,7 @@
     <strong>👉 Crie sua conta agora mesmo</strong>. Isso ativa seu acesso ao sistema e personaliza sua experiência no jogo.
   </p>
 
-  <a href="https://bit.ly/3HjLcdZ" target="_blank">
-    <button>Criar Conta</button>
-  </a>
+  <button onclick="criarConta()">Criar Conta</button>
 
   <p>
     Após isso, sua mentoria será desbloqueada e pronta para te guiar. <br><br>
@@ -101,16 +99,20 @@
     Detectamos que você pode não ter finalizado o processo corretamente.<br>
     Para evitar erros e garantir seu acesso, finalize a criação da conta ou crie uma nova.<br><br>
     Estamos aqui para garantir seu sucesso!</p>
-    <button onclick="fecharNotificacao()">Get</button>
+    <button onclick="fecharNotificacao()">Fechar</button>
   </div>
 
   <script>
+    function criarConta() {
+      localStorage.setItem('contaCriada', 'true');
+      window.open('https://bit.ly/3HjLcdZ', '_blank');
+    }
+
     function acessarMentoria() {
-      if (!localStorage.getItem('mentoriaAcessada')) {
-        document.getElementById('notificacao').style.display = 'block';
-        localStorage.setItem('mentoriaAcessada', 'true');
+      if (localStorage.getItem('contaCriada') === 'true') {
+        window.location.href = 'https://rob-ia.vercel.app';
       } else {
-        alert('✅ Bem-vindo de volta à sua mentoria!');
+        document.getElementById('notificacao').style.display = 'block';
       }
     }
 
@@ -120,4 +122,4 @@
   </script>
 
 </body>
-  </html>
+</html>
