@@ -62,7 +62,7 @@
 
   <div class="titulo">ROSA PRÓXIMAS</div>
   <div class="sinais-container" id="sinaisContainer">
-    <!-- Sinais gerados aqui -->
+    <!-- Sinais aqui -->
   </div>
 
   <div class="titulo">DADOS CRUS</div>
@@ -74,20 +74,29 @@
       const container = document.getElementById("sinaisContainer");
       container.innerHTML = "";
 
+      let hora = 13;
+      let minuto = 38;
+      let segundo = 24;
+
       for (let i = 0; i < 16; i++) {
-        const hora = gerarHorario();
+        segundo += Math.floor(Math.random() * 20) + 5; // Avança de 5 a 24 segundos
+
+        if (secondo >= 60) {
+          minuto += Math.floor(segundo / 60);
+          segundo = segundo % 60;
+        }
+
+        if (minuto >= 60) {
+          hora += Math.floor(minuto / 60);
+          minuto = minuto % 60;
+        }
+
+        const horaStr = `${hora.toString().padStart(2, '0')}:${minuto.toString().padStart(2, '0')}:${segundo.toString().padStart(2, '0')}`;
         const div = document.createElement("div");
         div.className = "sinal";
-        div.textContent = hora;
+        div.textContent = horaStr;
         container.appendChild(div);
       }
-    }
-
-    function gerarHorario() {
-      const hora = 9;
-      const minuto = Math.floor(Math.random() * 60);
-      const segundo = Math.floor(Math.random() * 60);
-      return `${hora.toString().padStart(2, '0')}:${minuto.toString().padStart(2, '0')}:${segundo.toString().padStart(2, '0')}`;
     }
 
     // Gera sinais ao carregar
