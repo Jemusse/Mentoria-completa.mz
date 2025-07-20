@@ -74,30 +74,14 @@
       const container = document.getElementById("sinaisContainer");
       container.innerHTML = "";
 
-      let hora = 13;
-      let minuto = 38;
-      let segundo = 24;
+      const agora = new Date();
       const quantidade = 16;
-      const intervalo = 20; // segundos entre os sinais
+      const intervaloMinutos = 3;
 
       for (let i = 0; i < quantidade; i++) {
-        // Criar novo horário
-        segundo += intervalo;
+        const novoHorario = new Date(agora.getTime() + i * intervaloMinutos * 60000);
+        const horaStr = novoHorario.toTimeString().split(" ")[0]; // HH:MM:SS
 
-        if (segundo >= 60) {
-          minuto += Math.floor(segundo / 60);
-          segundo = segundo % 60;
-        }
-
-        if (minuto >= 60) {
-          hora += Math.floor(minuto / 60);
-          minuto = minuto % 60;
-        }
-
-        // Formatar o horário
-        const horaStr = `${hora.toString().padStart(2, '0')}:${minuto.toString().padStart(2, '0')}:${segundo.toString().padStart(2, '0')}`;
-
-        // Criar e adicionar o elemento na tela
         const div = document.createElement("div");
         div.className = "sinal";
         div.textContent = horaStr;
