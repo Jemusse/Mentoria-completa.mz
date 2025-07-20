@@ -2,122 +2,96 @@
 <html lang="pt">
 <head>
   <meta charset="UTF-8">
-  <title>Mentoria de Jogo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sinais Rosa</title>
   <style>
     body {
-      margin: 0;
-      padding: 0;
-      font-family: 'Segoe UI', sans-serif;
-      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
-      color: #ffffff;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 50px 20px;
-    }
-
-    h1 {
-      font-size: 36px;
-      text-align: center;
-      margin-bottom: 30px;
-    }
-
-    p {
-      max-width: 700px;
-      text-align: center;
-      font-size: 22px;
-      line-height: 1.8;
-      margin: 30px 0;
-    }
-
-    button {
-      background: #ff6b6b;
+      background-color: #111;
       color: white;
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 20px;
+    }
+
+    .gerar-btn {
+      background-color: #ff5c00;
       border: none;
-      padding: 18px 35px;
-      font-size: 22px;
-      border-radius: 10px;
-      margin-top: 15px;
-      cursor: pointer;
-      transition: background 0.3s ease, transform 0.2s ease;
-      box-shadow: 0 6px 15px rgba(0,0,0,0.3);
-    }
-
-    button:hover {
-      background: #ff4d4d;
-      transform: scale(1.05);
-    }
-
-    .notification {
-      display: none;
-      background: #fff3cd;
-      color: #856404;
-      border: 2px solid #ffeeba;
-      border-radius: 10px;
-      padding: 30px;
-      margin-top: 40px;
-      max-width: 700px;
-      font-size: 20px;
-      animation: fadeIn 0.5s ease-in-out;
-      text-align: center;
-    }
-
-    .notification button {
-      background: #28a745;
+      padding: 12px 25px;
+      font-size: 18px;
+      font-weight: bold;
       color: white;
-      padding: 14px 28px;
-      font-size: 20px;
-      margin-top: 20px;
+      border-radius: 8px;
+      margin: 20px auto;
+      cursor: pointer;
     }
 
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(-10px); }
-      to { opacity: 1; transform: translateY(0); }
+    .sinais-container {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+      max-width: 400px;
+      margin: 0 auto;
+    }
+
+    .sinal {
+      background-color: #800080;
+      padding: 10px;
+      border-radius: 5px;
+      font-weight: bold;
+    }
+
+    .titulo {
+      margin: 15px 0;
+      font-size: 18px;
+      color: #ccc;
+    }
+
+    .protecao {
+      margin-top: 25px;
+      font-size: 16px;
+      background-color: #222;
+      padding: 10px;
+      border-radius: 10px;
+      display: inline-block;
     }
   </style>
 </head>
 <body>
 
-  <h1>🚀 Bem-vindo à sua Mentoria Estratégica de Jogo!</h1>
+  <button class="gerar-btn" onclick="gerarSinais()">Gerar</button>
 
-  <p>
-    Para garantir que você aproveite ao máximo sua mentoria, o primeiro passo é simples, mas fundamental:<br><br>
-    <strong>👉 Crie sua conta agora mesmo</strong>. Isso ativa seu acesso ao sistema e personaliza sua experiência no jogo.
-  </p>
-
-  <button onclick="criarConta()">Criar Conta</button>
-
-  <p>
-    Após isso, sua mentoria será desbloqueada e pronta para te guiar. <br><br>
-    <strong>🎯 Tudo pronto? Acesse agora sua Mentoria abaixo:</strong>
-  </p>
-
-  <button onclick="acessarMentoria()">Acessar Mentoria</button>
-
-  <div class="notification" id="notificacao">
-    <p>👋 Olá<br><br>
-    Bem-vindo à sua mentoria.</p>
-    <button onclick="abrirMentoria()">Abrir</button>
+  <div class="titulo">ROSA PRÓXIMAS</div>
+  <div class="sinais-container" id="sinaisContainer">
+    <!-- Sinais gerados aqui -->
   </div>
 
-  <script>
-    function criarConta() {
-      localStorage.setItem('contaCriada', 'true');
-      window.open('https://www.megagamelive.com/affiliates/?btag=2184909', '_blank');
-    }
+  <div class="titulo">DADOS CRUS</div>
 
-    function acessarMentoria() {
-      if (localStorage.getItem('contaCriada') === 'true') {
-        window.location.href = 'https://rob-ia.vercel.app';
-      } else {
-        document.getElementById('notificacao').style.display = 'block';
+  <div class="protecao">Proteção 3x ✅</div>
+
+  <script>
+    function gerarSinais() {
+      const container = document.getElementById("sinaisContainer");
+      container.innerHTML = "";
+
+      for (let i = 0; i < 16; i++) {
+        const hora = gerarHorario();
+        const div = document.createElement("div");
+        div.className = "sinal";
+        div.textContent = hora;
+        container.appendChild(div);
       }
     }
 
-    function abrirMentoria() {
-      window.location.href = 'https://rob-ia.vercel.app';
+    function gerarHorario() {
+      const hora = 9;
+      const minuto = Math.floor(Math.random() * 60);
+      const segundo = Math.floor(Math.random() * 60);
+      return `${hora.toString().padStart(2, '0')}:${minuto.toString().padStart(2, '0')}:${segundo.toString().padStart(2, '0')}`;
     }
+
+    // Gera sinais ao carregar
+    window.onload = gerarSinais;
   </script>
 
 </body>
