@@ -3,56 +3,70 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sinais Rosa</title>
+  <title>Sinais Roxos</title>
   <style>
     body {
       background-color: #111;
       color: white;
-      font-family: Arial, sans-serif;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       text-align: center;
       padding: 20px;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
     }
 
     .gerar-btn {
       background-color: #ff5c00;
       border: none;
-      padding: 12px 25px;
+      padding: 12px 30px;
       font-size: 18px;
       font-weight: bold;
       color: white;
-      border-radius: 8px;
+      border-radius: 10px;
       margin: 20px auto;
       cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .gerar-btn:hover {
+      background-color: #e24e00;
     }
 
     .sinais-container {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
+      grid-template-columns: repeat(7, 1fr);
       gap: 10px;
-      max-width: 400px;
-      margin: 0 auto;
+      max-width: 700px;
+      margin: 0 auto 20px;
     }
 
     .sinal {
-      background-color: #800080;
-      padding: 10px;
-      border-radius: 5px;
+      background-color: #6a0dad;
+      padding: 12px 0;
+      border-radius: 8px;
       font-weight: bold;
+      font-size: 16px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
     }
 
     .titulo {
-      margin: 15px 0;
-      font-size: 18px;
-      color: #ccc;
+      margin: 15px 0 10px;
+      font-size: 20px;
+      color: #dda0dd;
+      font-weight: bold;
     }
 
     .protecao {
-      margin-top: 25px;
+      margin-top: 30px;
       font-size: 16px;
       background-color: #222;
-      padding: 10px;
-      border-radius: 10px;
+      color: #00ff99;
+      padding: 12px 20px;
+      border-radius: 12px;
       display: inline-block;
+      font-weight: bold;
     }
   </style>
 </head>
@@ -60,14 +74,14 @@
 
   <button class="gerar-btn" onclick="gerarSinais()">Gerar</button>
 
-  <div class="titulo">ROSA PRÓXIMAS</div>
+  <div class="titulo">ROXOS PRÓXIMOS</div>
   <div class="sinais-container" id="sinaisContainer">
     <!-- Sinais serão gerados aqui -->
   </div>
 
-  <div class="titulo">DADOS CRUS</div>
+  <div class="titulo">Análise da inteligência do algoritmo</div>
 
-  <div class="protecao">Proteção 3x ✅</div>
+  <div class="protecao">max 2.78 protex 1.45x</div>
 
   <script>
     function gerarSinais() {
@@ -75,12 +89,16 @@
       container.innerHTML = "";
 
       const agora = new Date();
-      const quantidade = 16;
-      const intervaloMinutos = 3;
+      const quantidade = 21; // 3 linhas × 7 colunas = 21 sinais
+      const intervaloMinutos = 1;
 
       for (let i = 0; i < quantidade; i++) {
         const novoHorario = new Date(agora.getTime() + i * intervaloMinutos * 60000);
-        const horaStr = novoHorario.toTimeString().split(" ")[0]; // HH:MM:SS
+        const horaStr = novoHorario.toLocaleTimeString('pt-PT', {
+          hour: '2-digit',
+          minute: '2-digit',
+          second: '2-digit'
+        });
 
         const div = document.createElement("div");
         div.className = "sinal";
